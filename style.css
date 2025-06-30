@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  font-family: 'Urbanist', sans-serif;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  color: #333;
+}
+header {
+  background-color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  position: relative;
+}
+header h1 {
+  font-size: 3rem;
+  color: #e05a00;
+  margin: 0;
+}
+header p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+#search {
+  margin-top: 20px;
+  padding: 12px 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.top-right button {
+  background: #e05a00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#categorias {
+  text-align: center;
+  margin: 40px 20px 20px;
+}
+#categorias h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.botoes-categorias button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 20px;
+  background: #e05a00;
+  color: white;
+  cursor: pointer;
+}
+.botoes-categorias button:hover {
+  background: #c14a00;
+}
+#produtos {
+  padding: 40px 20px;
+}
+#produtos h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.card-produto {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+}
+.card-produto img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+.card-produto h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #e05a00;
+}
+.card-produto p {
+  font-size: 0.95rem;
+  margin: 4px 0;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.modal-content input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.modal-content button:first-of-type {
+  background: #e05a00;
+  color: white;
+}
+.modal-content button:last-of-type {
+  background: #ccc;
+}
