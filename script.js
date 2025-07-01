@@ -2,27 +2,170 @@ const produtos = [
   {
     nome: "Camisa Polo",
     categoria: "Roupas",
-    preco: "R$ 60,00",
-    loja: "Loja Estilo",
+    preco: "R$ 100,00",    loja: "Visual",
     endereco: "Rua Afonso Pena, 123",
-    imagem: "https://via.placeholder.com/250"
+  },
+    {
+    nome: "Calção preto",
+    categoria: "Roupas",
+    preco: "R$ 79,99",
+    loja: "Lojas Magrão",
+    endereco: "Rua Oiapoque, 147",
+  },
+    {
+    nome: "Camisa branca básica",
+    categoria: "Roupas",
+    preco: "R$ 10,00",
+    loja: "Luca 10",
+    endereco: "Rua Bandeirante, 323",
+  },
+      {
+    nome: "Tênis nike SB",
+    categoria: "Roupas",
+    preco: "R$ 299,90",
+    loja: "Pitol",
+    endereco: "Rua Travessa guarani, 723",
   },
   {
     nome: "Chuveiro Elétrico",
     categoria: "Construção",
-    preco: "R$ 90,00",
-    loja: "Construcenter",
+    preco: "R$ 149,99",
+    loja: "Gerbran",
     endereco: "Av. Central, 456",
-    imagem: "https://via.placeholder.com/250"
+  },
+    {
+    nome: "Manômetro",
+    categoria: "Construção",
+    preco: "R$ 49,90",
+    loja: "Sabedott",
+    endereco: "Travessa Mundo, 956",
+  },
+    {
+    nome: "Luminária",
+    categoria: "Construção",
+    preco: "R$ 99,90",
+    loja: "Zanardi",
+    endereco: "Rua 7 de setembro, 496",
+  },
+      {
+    nome: "Maçaneta de porta",
+    categoria: "Construção",
+    preco: "R$ 49,90",
+    loja: "Stalar",
+    endereco: "Rua Agostini, 776",
   },
   {
+    nome: "IPHONE 15 pro MAX",
+    categoria: "Eletrônicos",
+    preco: "R$ 14000,00",
+    loja: "Leo Celulares",
+    endereco: "Rya do calçadão, 789",
+  },
+    {
     nome: "Fone Bluetooth",
     categoria: "Eletrônicos",
-    preco: "R$ 120,00",
-    loja: "Tech Loja",
-    endereco: "Rua das Flores, 789",
-    imagem: "https://via.placeholder.com/250"
-  }
+    preco: "R$ 149,90",
+    loja: "smo celulares",
+    endereco: "Rua Ernesto Zanquin, 666",
+  },
+      {
+    nome: "Capinha Samsung AS23",
+    categoria: "Eletrônicos",
+    preco: "R$ 49,90",
+    loja: "smo Celulares",
+    endereco: "Av. Salgado Filho, 996",
+  },
+    {
+    nome: "Carregador tipo C",
+    categoria: "Eletrônicos",
+    preco: "R$ 100,00",
+    loja: "Bernatcell assistência",
+    endereco: "Rua Barão do Rio Branco, 159",
+  },
+{
+  nome: "Preço do Litro de Gasolina",
+  categoria: "Posto de Gasolina",
+  preco: "R$ 5,99 p/L",
+  loja: "Volta Grande",
+  endereco: "Willy Barth, 778"
+},
+{
+  nome: "Preço do Litro de Gasolina",
+  categoria: "Posto de Gasolina",
+  preco: "R$ 5,87 p/L",
+  loja: "Max",
+  endereco: "Rua das Palmeiras, 321"
+},
+{
+  nome: "Preço do Litro de Gasolina",
+  categoria: "Posto de Gasolina",
+  preco: "R$ 6,05 p/L",
+  loja: "Garoto",
+  endereco: "Avenida Brasil, 987"
+},
+{
+  nome: "Preço do Litro de Gasolina",
+  categoria: "Posto de Gasolina",
+  preco: "R$ 5,93 p/L",
+  loja: "Santo Anjo",
+  endereco: "Rua Santa Luzia, 456"
+},
+{
+  nome: "Aspirina",
+  categoria: "Farmácia",
+  preco: "R$ 5,93",
+  loja: "São Miguel",
+  endereco: "Rua das Flores, 111"
+},
+{
+  nome: "Paracetamol",
+  categoria: "Farmácia",
+  preco: "R$ 3,50",
+  loja: "Farmácia Agostini",
+  endereco: "Avenida das Palmeiras, 222"
+},
+{
+  nome: "Dipirona Gotas",
+  categoria: "Farmácia",
+  preco: "R$ 6,20",
+  loja: "Farmácia São Bento",
+  endereco: "Rua do Progresso, 333"
+},
+{
+  nome: "Desodorante Rexona",
+  categoria: "Farmácia",
+  preco: "R$ 9,80",
+  loja: "Farmácia São João",
+  endereco: "Travessa Central, 444"
+},
+{
+  nome: "Caderno 96 folhas",
+  categoria: "Papelaria",
+  preco: "R$ 14,90",
+  loja: "R2",
+  endereco: "Rua dos Estudantes, 101"
+},
+{
+  nome: "Caneta Azul",
+  categoria: "Papelaria",
+  preco: "R$ 1,50",
+  loja: "Arco-Íris",
+  endereco: "Avenida das Letras, 202"
+},
+{
+  nome: "Bobbie's Goods",
+  categoria: "Papelaria",
+  preco: "R$ 14,90",
+  loja: "Marcar",
+  endereco: "Travessa Criativa, 303"
+},
+{
+  nome: "Agenda ",
+  categoria: "Papelaria",
+  preco: "R$ 19,99",
+  loja: "Agostini",
+  endereco: "Praça Central, 404"
+}
 ];
 
 const listaProdutos = document.getElementById("lista-produtos");
