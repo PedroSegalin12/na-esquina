@@ -221,9 +221,7 @@ function enviarCadastro() {
 
 exibirProdutos(produtos);
 
-// ----------------------------
-// 🔍 TESTES UNITÁRIOS
-// ----------------------------
+//testes unitariso abaixo
 function rodarTestes() {
   const output = [];
   const print = (msg, ok = true) => {
@@ -282,9 +280,7 @@ function rodarTestes() {
   return output;
 }
 
-// ----------------------------
-// 🧩 TESTES DE COMPONENTES
-// ----------------------------
+//teste componentes abaixo
 function testarComponenteProduto() {
   const mock = [{
     nome: "Tênis Esportivo",
@@ -333,7 +329,7 @@ function testarFormularioCadastro() {
   window.alert = alertOriginal;
 
   const passou = alertMsg.includes("Loja cadastrada com sucesso");
-  console.log(passou ? "✅ Formulário de cadastro funcionou corretamente" : "❌ Problema no envio do formulário");
+  console.log(passou ? "✅ Formulário de cadastro funcionou" : "❌ Problema no envio do formulário");
 }
 
 function rodarTestesComponentes() {
