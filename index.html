@@ -22,7 +22,7 @@
     <div class="botoes-categorias">
       <button onclick="filtrarCategoria('Roupas')">Roupas</button>
       <button onclick="filtrarCategoria('Eletrônicos')">Eletrônicos</button>
-      <button onclick="filtrarCategoria('Construção')">Construção</button>
+      <button onclick="filtrarCategoria('Materiais de Construção')">Materiais de Construção</button>  
       <button onclick="filtrarCategoria('Posto de Gasolina')">Posto de Gasolina</button>
       <button onclick="filtrarCategoria('Farmácia')">Farmácia</button>
       <button onclick="filtrarCategoria('Papelaria')">Papelaria</button>
@@ -38,7 +38,12 @@
     <div class="modal-content">
       <h2>Cadastro de Loja</h2>
       <input id="nomeLoja" placeholder="Nome da Loja" />
+      <input id="CNPJ" placeholder="CNPJ" inputmode="numeric" pattern="[0-9]*" />
+
+
+      <input id="Contato" placeholder="Contato" />
       <input id="enderecoLoja" placeholder="Endereço" />
+
       <label for="categoriaLoja">Categoria</label>
       <select id="categoriaLoja">
         <option value="">Selecione a categoria</option>
@@ -55,7 +60,17 @@
     </div>
   </div>
 
-  <!-- IMPORTANTE: type="module" é necessário para usar import no JS -->
-  <script type="module" src="script.js"></script>
+<!-- Primeiro, carrega o seu módulo externo -->
+<script type="module" src="script.js"></script>
+
+<!-- Depois, código separado para o CNPJ -->
+<script>
+  const cnpjInput = document.getElementById('CNPJ');
+  cnpjInput.addEventListener('input', function () {
+    this.value = this.value.replace(/\D/g, ''); // só números
+  });
+</script>
+
+
 </body>
 </html>

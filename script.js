@@ -61,6 +61,34 @@ function abrirCadastro() {
 function fecharCadastro() {
   document.getElementById('modalCadastro').style.display = 'none';
 }
+async function loginLoja() {
+  const cnpj = document.getElementById('cnpj').value.trim();
+  const senha = document.getElementById('senha').value.trim();
+
+  if (!cnpj || !senha) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  const { data: loja, error } = await supabase
+    .from('lojas')
+    .select('*')
+    .eq('cnpj', cnpj)
+    .eq('senha', senha)
+    .single();
+
+  if (error || !loja) {
+    alert("CNPJ ou senha incorretos.");
+  } else {
+    alert("Login realizado com sucesso!");
+
+    // 👉 Armazena o CNPJ no localStorage (opcional)
+    localStorage.setItem("cnpjLojaLogada", cnpj);
+
+    // 👉 Redireciona para a página inicial
+    window.location.href = "index.html";
+  }
+}
 
 async function enviarCadastro() {
   const nome = document.getElementById('nomeLoja').value.trim();
@@ -87,6 +115,7 @@ async function enviarCadastro() {
     alert("Por favor, preencha todos os campos.");
   }
 }
+
 
 window.abrirCadastro = abrirCadastro;
 window.fecharCadastro = fecharCadastro;
