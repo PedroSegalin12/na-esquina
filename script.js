@@ -82,10 +82,10 @@ async function loginLoja() {
   } else {
     alert("Login realizado com sucesso!");
 
-    // 👉 Armazena o CNPJ no localStorage (opcional)
+  // Armazena o CNPJ no localStorage //
     localStorage.setItem("cnpjLojaLogada", cnpj);
 
-    // 👉 Redireciona para a página inicial
+    //Redireciona para a página inicial
     window.location.href = "index.html";
   }
 }
@@ -94,19 +94,23 @@ async function enviarCadastro() {
   const nome = document.getElementById('nomeLoja').value.trim();
   const endereco = document.getElementById('enderecoLoja').value.trim();
   const categoria = document.getElementById('categoriaLoja').value;
+  const numero = document.getElementById('contatoLoja').value.trim(); // novo campo
 
-  if (nome && endereco && categoria) {
+  if (nome && endereco && categoria && numero) {
     const { error } = await supabase.from("produtos").insert([
       {
         nome: nome,
         endereco: endereco,
         categoria: categoria,
-        preco: "--"  // valor padrão para evitar erro NOT NULL
+        preco: "--"
       }
     ]);
     if (error) {
       alert("Erro ao cadastrar loja: " + error.message);
     } else {
+      // também salva o contato
+      await enviarContato();
+
       alert("Loja cadastrada com sucesso!");
       fecharCadastro();
       carregarProdutos();
@@ -116,6 +120,25 @@ async function enviarCadastro() {
   }
 }
 
+
+async function enviarContato() {
+  const nome = document.getElementById('nomeLoja').value.trim();
+  const numero = document.getElementById('contatoLoja').value.trim(); // input de contato
+
+  if (nome && numero) {
+    const { error } = await supabase.from("contato").insert([
+      {
+        nome: nome,
+        numero: numero
+      }
+    ]);
+    if (error) {
+      console.error("Erro ao salvar contato:", error.message);
+    } else {
+      console.log("Contato salvo com sucesso!");
+    }
+  }
+}
 
 window.abrirCadastro = abrirCadastro;
 window.fecharCadastro = fecharCadastro;
