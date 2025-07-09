@@ -10,9 +10,11 @@
 </head>
 <body>
   <header>
-    <div class="top-right">
-      <button onclick="abrirCadastro()">Cadastrar Loja</button>
-    </div>
+ <div class="top-buttons">
+    <button onclick="abrirCadastro()">Cadastrar Loja</button>
+    <button onclick="window.location.href='login.html'">Cadastro de Usuário</button>
+  </div>
+
     <h1>Página Inicial</h1>
     <p>Encontre as lojas da sua cidade rapidinho!</p>
     <input type="text" id="search" placeholder="O que você procura?" />
@@ -27,7 +29,7 @@
       <button onclick="filtrarCategoria('Posto de Gasolina')">Posto de Gasolina</button>
       <button onclick="filtrarCategoria('Farmácia')">Farmácia</button>
       <button onclick="filtrarCategoria('Papelaria')">Papelaria</button>
-       <button onclick="filtrarCategoria('Alimentação')">Alimentação</button>
+      <button onclick="filtrarCategoria('Alimentação')">Alimentação</button>
     </div>
   </section>
 

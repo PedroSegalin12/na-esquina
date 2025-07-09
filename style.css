@@ -31,20 +31,27 @@ header p {
   border: 1px solid #ccc;
   font-size: 1rem;
 }
-.top-right {
+.top-buttons {
   position: absolute;
   top: 20px;
   right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
 }
-.top-right button {
-  background: #e05a00;
+
+.top-buttons button {
+  background-color: #e05a00;
   color: white;
   border: none;
-  padding: 10px 20px;
   border-radius: 20px;
+  padding: 8px 15px;
   font-weight: bold;
   cursor: pointer;
 }
+
+
 #categorias {
   text-align: center;
   margin: 40px 20px 20px;

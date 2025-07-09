@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login da Loja</title>
+  <title>Cadastro de Usuário</title>
   <style>
-   * {
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -18,12 +18,6 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      animation: backgroundFade 5s infinite alternate;
-    }
-
-    @keyframes backgroundFade {
-      0% { background-color: #fff3e0; }
-      100% { background-color: #ffe0b2; }
     }
 
     .container {
@@ -32,12 +26,6 @@
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(255, 87, 34, 0.4);
       width: 320px;
-      animation: slideUp 0.8s ease-out;
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
     }
 
     h2 {
@@ -59,12 +47,6 @@
       margin-bottom: 20px;
       border: 2px solid #ffccbc;
       border-radius: 8px;
-      transition: border 0.3s;
-    }
-
-    input:focus {
-      border-color: #ff5722;
-      outline: none;
     }
 
     button {
@@ -76,7 +58,6 @@
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s;
     }
 
     button:hover {
@@ -87,55 +68,42 @@
 <body>
 
   <div class="container">
-    <h2>Login da Loja</h2>
-    <form onsubmit="loginLoja(); return false;">
-      <label for="cnpj">CNPJ</label>
-      <input type="text" id="cnpj" placeholder="Digite o CNPJ" required>
+    <h2>Cadastro de Usuário</h2>
+    <form onsubmit="cadastrarUsuario(); return false;">
+      <label for="email">E-mail</label>
+      <input type="text" id="email" placeholder="Digite seu e-mail" required>
 
       <label for="senha">Senha</label>
-      <input type="password" id="senha" placeholder="Digite a senha" required>
+      <input type="password" id="senha" placeholder="Digite uma senha" required>
 
-      <button type="submit">Entrar</button>
+      <button type="submit">Cadastrar</button>
     </form>
   </div>
 
-  <!-- Script do Supabase + função login -->
-  <script type="module">
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+  <script>
+    function cadastrarUsuario() {
+      const email = document.getElementById("email").value.trim();
+      const senha = document.getElementById("senha").value.trim();
 
-    const supabaseUrl = 'https://gvkanntuocgmdcuyhwkp.supabase.co';
-    const supabaseKey = 'SUA_CHAVE_AQUI'; // troque pela sua chave
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
-    // Função de login
-    window.loginLoja = async function () {
-      const cnpj = document.getElementById('cnpj').value.trim();
-      const senha = document.getElementById('senha').value.trim();
-
-      if (!cnpj || !senha) {
+      if (!email || !senha) {
         alert("Preencha todos os campos!");
         return;
       }
 
-      const { data: loja, error } = await supabase
-        .from('lojas')
-        .select('*')
-        .eq('cnpj', cnpj)
-        .eq('senha', senha)
-        .single();
-
-      if (error || !loja) {
-        alert("CNPJ ou senha incorretos.");
-      } else {
-        alert("Login realizado com sucesso!");
-
-        // Armazena o CNPJ (opcional)
-        localStorage.setItem("cnpjLojaLogada", cnpj);
-
-        // Redireciona para index.html
-        window.location.href = "index.html";
+      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+      const existe = usuarios.find(u => u.email === email);
+      if (existe) {
+        alert("E-mail já cadastrado!");
+        return;
       }
-    };
+
+      usuarios.push({ email, senha });
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+      alert("Cadastro realizado com sucesso!");
+      window.location.href = "index.html"; 
+    }
   </script>
+
 </body>
 </html>
