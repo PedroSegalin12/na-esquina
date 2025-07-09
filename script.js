@@ -1,6 +1,6 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-const supabaseUrl = 'https://gvkanntuocgmdcuyhwkp.supabase.co'; // substitua pela sua URL
+const supabaseUrl = 'https://gvkanntuocgmdcuyhwkp.supabase.co'; 
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd2a2FubnR1b2NnbWRjdXlod2twIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzMjIyMzcsImV4cCI6MjA2Njg5ODIzN30.csTHHao5dCabyB9kAs9D84UsT1PDgUGOV2MQ7hHPxT4'; // substitua pela sua chave
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -23,6 +23,7 @@ function exibirProdutos(lista) {
       <h3>${prod.nome}</h3>
       <p><strong>Endereço:</strong> ${prod.endereco}</p>
       <p><strong>Categoria:</strong> ${prod.categoria}</p>
+        <p><strong>Contato:</strong> ${prod.contato}</p>
     </div>`;
     listaProdutos.innerHTML += card;
   });
@@ -82,10 +83,10 @@ async function loginLoja() {
   } else {
     alert("Login realizado com sucesso!");
 
-  // Armazena o CNPJ no localStorage //
+
     localStorage.setItem("cnpjLojaLogada", cnpj);
 
-    //Redireciona para a página inicial
+   
     window.location.href = "index.html";
   }
 }
@@ -94,21 +95,22 @@ async function enviarCadastro() {
   const nome = document.getElementById('nomeLoja').value.trim();
   const endereco = document.getElementById('enderecoLoja').value.trim();
   const categoria = document.getElementById('categoriaLoja').value;
-  const contato = document.getElementById('contatoLoja').value.trim(); // novo campo
+  const contato = document.getElementById('contatoLoja').value.trim(); 
 
   if (nome && endereco && categoria && contato) {
-    const { error } = await supabase.from("produtos").insert([
-      {
-        nome: nome,
-        endereco: endereco,
-        categoria: categoria,
-        preco: "--"
-      }
-    ]);
+  const { error } = await supabase.from("produtos").insert([
+  {
+    nome: nome,
+    endereco: endereco,
+    categoria: categoria,
+    contato: contato  
+  }
+]);
+
     if (error) {
       alert("Erro ao cadastrar loja: " + error.message);
     } else {
-      // também salva o contato
+      
       await enviarContato();
 
       alert("Loja cadastrada com sucesso!");
@@ -124,7 +126,6 @@ async function enviarCadastro() {
 async function enviarContato() {
   const nome = document.getElementById('nomeLoja').value.trim();
   const contato = document.getElementById('contatoLoja').value.trim(); 
-
   if (nome && contato) {
     const { error } = await supabase.from("contato").insert([
       {

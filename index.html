@@ -26,6 +26,7 @@
       <button onclick="filtrarCategoria('Posto de Gasolina')">Posto de Gasolina</button>
       <button onclick="filtrarCategoria('Farmácia')">Farmácia</button>
       <button onclick="filtrarCategoria('Papelaria')">Papelaria</button>
+       <button onclick="filtrarCategoria('Alimentação')">Alimentação</button>
     </div>
   </section>
 
@@ -39,22 +40,22 @@
       <h2>Cadastro de Loja</h2>
       <input id="nomeLoja" placeholder="Nome da Loja" />
       <input id="CNPJ" placeholder="CNPJ" inputmode="numeric" pattern="[0-9]*" />
-      <input id="contatoLoja" placeholder="Contato" />
-      <input id="enderecoLoja" placeholder="Endereço" />
-      <input id="senha" type="password" placeholder="Senha" required />
-      <input id="senha" type="password" placeholder="Confirme a Senha" required />
 
+
+      <input id="contatoLoja" placeholder="Contato" />
+
+      <input id="enderecoLoja" placeholder="Endereço" />
 
       <label for="categoriaLoja">Categoria</label>
       <select id="categoriaLoja">
         <option value="">Selecione a categoria</option>
         <option value="Materiais de Construção">Materiais de Construção</option>
-        <option value="Comida">Comida</option>
         <option value="Roupas">Roupas</option>
         <option value="Posto de Gasolina">Posto de Gasolina</option>
         <option value="Farmácia">Farmácia</option>
         <option value="Papelaria">Papelaria</option>
         <option value="Eletrônicos">Eletrônicos</option>
+        <option value="Alimentação">Alimentaçao</option>
       </select>
       <button onclick="enviarCadastro()">Enviar</button>
       <button onclick="fecharCadastro()">Cancelar</button>
@@ -66,7 +67,7 @@
 <script>
   const cnpjInput = document.getElementById('CNPJ');
   cnpjInput.addEventListener('input', function () {
-    this.value = this.value.replace(/\D/g, ''); // só números
+    this.value = this.value.replace(/\D/g, ''); 
   });
 </script>
 
