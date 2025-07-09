@@ -94,9 +94,9 @@ async function enviarCadastro() {
   const nome = document.getElementById('nomeLoja').value.trim();
   const endereco = document.getElementById('enderecoLoja').value.trim();
   const categoria = document.getElementById('categoriaLoja').value;
-  const numero = document.getElementById('contatoLoja').value.trim(); // novo campo
+  const contato = document.getElementById('contatoLoja').value.trim(); // novo campo
 
-  if (nome && endereco && categoria && numero) {
+  if (nome && endereco && categoria && contato) {
     const { error } = await supabase.from("produtos").insert([
       {
         nome: nome,
@@ -123,13 +123,13 @@ async function enviarCadastro() {
 
 async function enviarContato() {
   const nome = document.getElementById('nomeLoja').value.trim();
-  const numero = document.getElementById('contatoLoja').value.trim(); // input de contato
+  const contato = document.getElementById('contatoLoja').value.trim(); 
 
-  if (nome && numero) {
+  if (nome && contato) {
     const { error } = await supabase.from("contato").insert([
       {
         nome: nome,
-        numero: numero
+        contato: contato
       }
     ]);
     if (error) {
