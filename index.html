@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -13,7 +14,7 @@
       <button onclick="abrirCadastro()">Cadastrar Loja</button>
     </div>
     <h1>Página Inicial</h1>
-    <p>Encontre produtos e lojas da sua cidade rapidinho!</p>
+    <p>Encontre as lojas da sua cidade rapidinho!</p>
     <input type="text" id="search" placeholder="O que você procura?" />
   </header>
 
@@ -30,9 +31,9 @@
     </div>
   </section>
 
-  <section id="produtos">
-    <h2>Produtos em destaque</h2>
-    <div id="lista-produtos" class="grid-produtos"></div>
+  <section id="lojas">
+    <h2>Lojas em destaque</h2>
+    <div id="lista-lojas" class="grid-lojas"></div>
   </section>
 
   <div id="modalCadastro" class="modal">
@@ -42,7 +43,8 @@
       <input id="CNPJ" placeholder="CNPJ" inputmode="numeric" pattern="[0-9]*" />
 
 
-      <input id="contatoLoja" placeholder="Contato" />
+      <input type="tel" id="contatoLoja" placeholder="Contato" maxlength="15" required>
+
 
       <input id="enderecoLoja" placeholder="Endereço" />
 
