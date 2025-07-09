@@ -4,34 +4,34 @@ const supabaseUrl = 'https://gvkanntuocgmdcuyhwkp.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd2a2FubnR1b2NnbWRjdXlod2twIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzMjIyMzcsImV4cCI6MjA2Njg5ODIzN30.csTHHao5dCabyB9kAs9D84UsT1PDgUGOV2MQ7hHPxT4'; // substitua pela sua chave
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const listaProdutos = document.getElementById("lista-produtos");
+const listaLojas = document.getElementById("lista-lojas");
 const searchInput = document.getElementById("search");
 
-async function carregarProdutos() {
-  const { data, error } = await supabase.from("produtos").select("*");
+async function carregarLojas() {
+  const { data, error } = await supabase.from("lojas").select("*");
   if (error) {
-    console.error("Erro ao buscar produtos:", error.message);
+    console.error("Erro ao buscar lojas:", error.message);
     return;
   }
-  exibirProdutos(data);
+  exibirLojas(data);
 }
 
-function exibirProdutos(lista) {
-  listaProdutos.innerHTML = "";
+function exibirLojas(lista) {
+  listaLojas.innerHTML = "";
   lista.forEach(prod => {
-    const card = `<div class="card-produto">
+    const card = `<div class="card-lojas">
       <h3>${prod.nome}</h3>
       <p><strong>Endereço:</strong> ${prod.endereco}</p>
       <p><strong>Categoria:</strong> ${prod.categoria}</p>
         <p><strong>Contato:</strong> ${prod.contato}</p>
     </div>`;
-    listaProdutos.innerHTML += card;
+    listaLojas.innerHTML += card;
   });
 }
 
 async function filtrarCategoria(categoria) {
   const { data, error } = await supabase
-    .from("produtos")
+    .from("lojas")
     .select("*")
     .eq("categoria", categoria);
 
@@ -39,12 +39,12 @@ async function filtrarCategoria(categoria) {
     console.error("Erro ao filtrar:", error.message);
     return;
   }
-  exibirProdutos(data);
+  exibirLojas(data);
 }
 
 searchInput.addEventListener("input", async () => {
   const termo = searchInput.value.toLowerCase();
-  const { data, error } = await supabase.from("produtos").select("*");
+  const { data, error } = await supabase.from("lojas").select("*");
   if (error) return;
 
   const filtrados = data.filter(p =>
@@ -52,7 +52,7 @@ searchInput.addEventListener("input", async () => {
     p.endereco.toLowerCase().includes(termo) ||
     p.categoria.toLowerCase().includes(termo)
   );
-  exibirProdutos(filtrados);
+  exibirLojas(filtrados);
 });
 
 function abrirCadastro() {
@@ -98,7 +98,7 @@ async function enviarCadastro() {
   const contato = document.getElementById('contatoLoja').value.trim(); 
 
   if (nome && endereco && categoria && contato) {
-  const { error } = await supabase.from("produtos").insert([
+  const { error } = await supabase.from("lojas").insert([
   {
     nome: nome,
     endereco: endereco,
@@ -115,7 +115,7 @@ async function enviarCadastro() {
 
       alert("Loja cadastrada com sucesso!");
       fecharCadastro();
-      carregarProdutos();
+      carregarLojas();
     }
   } else {
     alert("Por favor, preencha todos os campos.");
@@ -141,9 +141,32 @@ async function enviarContato() {
   }
 }
 
+//isso aqui mostra o ()no telefone e deixa no formao certo
+document.getElementById('contatoLoja').addEventListener('input', function (e) {
+  let valor = e.target.value.replace(/\D/g, ''); 
+
+  if (valor.length > 11) valor = valor.slice(0, 11); 
+
+  let formatado = valor;
+
+  if (valor.length > 0) {
+    formatado = '(' + valor.substring(0, 2);
+  }
+  if (valor.length >= 3) {
+    formatado += ') ' + valor.substring(2, 7);
+  }
+  if (valor.length >= 8) {
+    formatado += '-' + valor.substring(7, 11);
+  }
+
+  e.target.value = formatado;
+});
+
+
+
 window.abrirCadastro = abrirCadastro;
 window.fecharCadastro = fecharCadastro;
 window.enviarCadastro = enviarCadastro;
 window.filtrarCategoria = filtrarCategoria;
 
-carregarProdutos();
+carregarLojas();

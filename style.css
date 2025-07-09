@@ -66,39 +66,39 @@ header p {
 .botoes-categorias button:hover {
   background: #c14a00;
 }
-#produtos {
+#lojas {
   padding: 40px 20px;
 }
-#produtos h2 {
+#lojas h2 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 30px;
 }
-.grid-produtos {
+.grid-lojas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
 }
-.card-produto {
+.card-lojas {
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 20px;
   text-align: center;
 }
-.card-produto img {
+.card-lojas img {
   width: 100%;
   border-radius: 15px;
   margin-bottom: 15px;
 }
-.card-produto h3 {
+.card-lojas h3 {
   font-size: 1.2rem;
   margin: 10px 0;
   color: #e05a00;
 }
-.card-produto p {
+.card-lojas p {
   font-size: 0.95rem;
   margin: 4px 0;
 }
