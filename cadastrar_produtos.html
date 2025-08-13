@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffe0cc, #ffd6b3);
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            color: #e65c00;
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .row .form-group {
+            flex: 1;
+        }
+
+        .images {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .images input {
+            width: 100px;
+        }
+
+        button {
+            background: #e65c00;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #cc5200;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="header">
+            <img src="https://via.placeholder.com/50" alt="Logo">
+            <h1>Cadastrar Produto</h1>
+        </div>
+
+        <form id="formProduto">
+            <div class="form-group">
+                <label for="nome">Nome do Produto</label>
+                <input type="text" id="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <input type="text" id="categoria" required>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="preco">Preço</label>
+                    <input type="number" id="preco" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantidade">Quantidade no estoque</label>
+                    <input type="number" id="quantidade" required>
+                </div>
+            </div>
+
+            <label>Foto do produto</label>
+            <div class="images">
+                <input type="file" accept="image/*">
+                <input type="file" accept="image/*">
+            </div>
+
+            <button type="submit">Adicionar Produto</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("formProduto").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Produto adicionado com sucesso!");
+            window.location.href = "loja.html";
+        });
+    </script>
+
+</body>
+</html>

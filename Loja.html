@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffe0cc, #ffd6b3);
+        }
+
+        /* Cabeçalho */
+        header {
+            display: flex;
+            justify-content: center; /* Centraliza conteúdo */
+            align-items: center;
+            position: relative; /* Para posicionar o botão no canto */
+            background: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            color: #e65c00;
+            margin: 0;
+        }
+
+        .btn {
+            background: #e65c00;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            position: absolute; /* Mantém o botão à direita */
+            right: 30px;
+        }
+
+        /* Banner */
+        .banner {
+            background: #ccc;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        /* Info loja */
+        .loja-info {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loja-info h2 {
+            color: #e65c00;
+            margin-bottom: 5px;
+        }
+
+        /* Produtos */
+        .produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 10px;
+        }
+
+        .card-info h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .card-info p {
+            margin: 5px 0 0;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nome da Loja</h1>
+        <a href="cadastrar_produtos.html" target="_blank" class="btn">Cadastrar Produtos</a>
+    </header>
+
+    <div class="banner">
+        <img src="https://via.placeholder.com/800x200" alt="Banner da Loja">
+    </div>
+
+    <div class="loja-info">
+        <h2>Descrição da Loja</h2>
+        <p>Vendemos os melhores produtos da cidade! Localizada no centro, fácil acesso e ótimo atendimento.</p>
+    </div>
+
+    <h2 style="text-align:center; color:#e65c00;">Produtos em Destaque</h2>
+    <div class="produtos">
+        <div class="card">
+            <img src="https://via.placeholder.com/200" alt="Produto">
+            <div class="card-info">
+                <h3>Produto 1</h3>
+                <p>R$ 99,90</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/200" alt="Produto">
+            <div class="card-info">
+                <h3>Produto 2</h3>
+                <p>R$ 79,90</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/200" alt="Produto">
+            <div class="card-info">
+                <h3>Produto 3</h3>
+                <p>R$ 59,90</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
