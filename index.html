@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,10 +9,29 @@
 </head>
 <body>
   <header>
- <div class="top-buttons">
-    <button onclick="abrirCadastro()">Cadastrar Loja</button>
-    <button onclick="window.location.href='login.html'">Cadastro de Usuário</button>
-  </div>
+    <div class="top-buttons">
+<button id="btnLogin" onclick="window.location.href='menu.html'">Entrar / Cadastro</button>
+<button id="btnConta" style="display:none;" onclick="window.location.href='minha-conta.html'">Minha Conta</button>
+<button id="btnSair" style="display:none;">Sair</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const usuarioLogado = localStorage.getItem('usuarioLogado');
+
+    if (usuarioLogado) {
+      document.getElementById('btnLogin').style.display = 'none';
+      document.getElementById('btnConta').style.display = 'inline-block';
+      document.getElementById('btnSair').style.display = 'inline-block';
+    }
+
+    document.getElementById('btnSair').addEventListener('click', () => {
+      localStorage.removeItem('usuarioLogado');
+      location.reload(); 
+    });
+  });
+</script>
+
+    </div>
 
     <h1>Página Inicial</h1>
     <p>Encontre as lojas da sua cidade rapidinho!</p>
@@ -38,40 +56,13 @@
     <div id="lista-lojas" class="grid-lojas"></div>
   </section>
 
-  <div id="modalCadastro" class="modal">
-    <div class="modal-content">
-      <h2>Cadastro de Loja</h2>
-      <input id="nomeLoja" placeholder="Nome da Loja" />
-      <input id="CNPJ" placeholder="CNPJ" inputmode="numeric" pattern="[0-9]*" />
-
-
-      <input type="tel" id="contatoLoja" placeholder="Contato" maxlength="15" required>
-
-
-      <input id="enderecoLoja" placeholder="Endereço" />
-
-      <label for="categoriaLoja">Categoria</label>
-      <select id="categoriaLoja">
-        <option value="">Selecione a categoria</option>
-        <option value="Materiais de Construção">Materiais de Construção</option>
-        <option value="Roupas">Roupas</option>
-        <option value="Posto de Gasolina">Posto de Gasolina</option>
-        <option value="Farmácia">Farmácia</option>
-        <option value="Papelaria">Papelaria</option>
-        <option value="Eletrônicos">Eletrônicos</option>
-        <option value="Alimentação">Alimentaçao</option>
-      </select>
-      <button onclick="enviarCadastro()">Enviar</button>
-      <button onclick="fecharCadastro()">Cancelar</button>
-    </div>
-  </div>
-
-<script type="module" src="script.js"></script>
-
+  <script type="module" src="script.js"></script>
 <script>
-  const cnpjInput = document.getElementById('CNPJ');
-  cnpjInput.addEventListener('input', function () {
-    this.value = this.value.replace(/\D/g, ''); 
+  document.addEventListener('DOMContentLoaded', () => {
+    const usuarioLogado = localStorage.getItem('usuarioLogado');
+    if (usuarioLogado) {
+      document.getElementById('btnLogin').style.display = 'none';
+    }
   });
 </script>
 

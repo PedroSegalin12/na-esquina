@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela Inicial</title>
+  <style>
+    body {
+      background-color: #fff3e0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 87, 34, 0.4);
+      text-align: center;
+      width: 300px;
+    }
+    h2 {
+      color: #ff5722;
+      margin-bottom: 25px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #e64a19;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Bem-vindo!</h2>
+    <button onclick="window.location.href='login.html'">Já tenho uma conta</button>
+    <button onclick="window.location.href='conta.html'">Cadastrar como Usuário</button>
+    <button onclick="window.location.href='cadastro-loja.html'">Cadastrar uma Loja</button>
+    <button onclick="window.location.href='index.html'">Voltar para o site</button>
+  </div>
+</body>
+</html>

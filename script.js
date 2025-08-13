@@ -1,7 +1,7 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-const supabaseUrl = 'https://gvkanntuocgmdcuyhwkp.supabase.co'; 
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd2a2FubnR1b2NnbWRjdXlod2twIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzMjIyMzcsImV4cCI6MjA2Njg5ODIzN30.csTHHao5dCabyB9kAs9D84UsT1PDgUGOV2MQ7hHPxT4'; // substitua pela sua chave
+const supabaseUrl = 'https://gvkanntuocgmdcuyhwkp.supabase.co';
+const supabaseKey = 'sua-chave-aqui';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const listaLojas = document.getElementById("lista-lojas");
@@ -23,7 +23,7 @@ function exibirLojas(lista) {
       <h3>${prod.nome}</h3>
       <p><strong>Endereço:</strong> ${prod.endereco}</p>
       <p><strong>Categoria:</strong> ${prod.categoria}</p>
-        <p><strong>Contato:</strong> ${prod.contato}</p>
+      <p><strong>Contato:</strong> ${prod.contato}</p>
     </div>`;
     listaLojas.innerHTML += card;
   });
@@ -62,107 +62,41 @@ function abrirCadastro() {
 function fecharCadastro() {
   document.getElementById('modalCadastro').style.display = 'none';
 }
-async function loginLoja() {
-  const cnpj = document.getElementById('cnpj').value.trim();
-  const senha = document.getElementById('senha').value.trim();
-
-  if (!cnpj || !senha) {
-    alert("Preencha todos os campos!");
-    return;
-  }
-
-  const { data: loja, error } = await supabase
-    .from('lojas')
-    .select('*')
-    .eq('cnpj', cnpj)
-    .eq('senha', senha)
-    .single();
-
-  if (error || !loja) {
-    alert("CNPJ ou senha incorretos.");
-  } else {
-    alert("Login realizado com sucesso!");
-
-
-    localStorage.setItem("cnpjLojaLogada", cnpj);
-
-   
-    window.location.href = "index.html";
-  }
-}
 
 async function enviarCadastro() {
   const nome = document.getElementById('nomeLoja').value.trim();
+  const contato = document.getElementById('contatoLoja').value.trim();
   const endereco = document.getElementById('enderecoLoja').value.trim();
   const categoria = document.getElementById('categoriaLoja').value;
-  const contato = document.getElementById('contatoLoja').value.trim(); 
 
-  if (nome && endereco && categoria && contato) {
+  if (!nome || !contato || !endereco || !categoria) {
+    alert('Preencha todos os campos!');
+    return;
+  }
+
   const { error } = await supabase.from("lojas").insert([
-  {
-    nome: nome,
-    endereco: endereco,
-    categoria: categoria,
-    contato: contato  
-  }
-]);
+    { nome, contato, endereco, categoria }
+  ]);
 
-    if (error) {
-      alert("Erro ao cadastrar loja: " + error.message);
-    } else {
-      
-      await enviarContato();
-
-      alert("Loja cadastrada com sucesso!");
-      fecharCadastro();
-      carregarLojas();
-    }
+  if (error) {
+    alert("Erro ao cadastrar loja: " + error.message);
+    console.error(error);
   } else {
-    alert("Por favor, preencha todos os campos.");
+    alert("Loja cadastrada com sucesso!");
+    fecharCadastro();
+    carregarLojas();
   }
 }
 
-
-async function enviarContato() {
-  const nome = document.getElementById('nomeLoja').value.trim();
-  const contato = document.getElementById('contatoLoja').value.trim(); 
-  if (nome && contato) {
-    const { error } = await supabase.from("contato").insert([
-      {
-        nome: nome,
-        contato: contato
-      }
-    ]);
-    if (error) {
-      console.error("Erro ao salvar contato:", error.message);
-    } else {
-      console.log("Contato salvo com sucesso!");
-    }
-  }
-}
-
-//isso aqui mostra o ()no telefone e deixa no formao certo
 document.getElementById('contatoLoja').addEventListener('input', function (e) {
-  let valor = e.target.value.replace(/\D/g, ''); 
-
-  if (valor.length > 11) valor = valor.slice(0, 11); 
-
+  let valor = e.target.value.replace(/\D/g, '');
+  if (valor.length > 11) valor = valor.slice(0, 11);
   let formatado = valor;
-
-  if (valor.length > 0) {
-    formatado = '(' + valor.substring(0, 2);
-  }
-  if (valor.length >= 3) {
-    formatado += ') ' + valor.substring(2, 7);
-  }
-  if (valor.length >= 8) {
-    formatado += '-' + valor.substring(7, 11);
-  }
-
+  if (valor.length > 0) formatado = '(' + valor.substring(0, 2);
+  if (valor.length >= 3) formatado += ') ' + valor.substring(2, 7);
+  if (valor.length >= 8) formatado += '-' + valor.substring(7, 11);
   e.target.value = formatado;
 });
-
-
 
 window.abrirCadastro = abrirCadastro;
 window.fecharCadastro = fecharCadastro;
