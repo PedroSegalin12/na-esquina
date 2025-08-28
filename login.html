@@ -39,6 +39,32 @@
         alert("E-mail ou senha inválidos.");
       }
     }
+    import { supabase } from './script.js'
+
+async function login(email, senha) {
+  const { data, error } = await supabase
+    .from('cadastro_usuario')
+    .select("*")
+    .eq("email", email)
+    .eq("senha", senha)
+    .single()
+
+  if (error || !data) {
+    alert("Email ou senha incorretos!")
+  } else {
+    alert("Login realizado com sucesso!")
+    localStorage.setItem("usuario", JSON.stringify(data)) // salva usuário logado
+    window.location.href = "conta.html"
+  }
+}
+
+document.getElementById("formLogin").addEventListener("submit", (e) => {
+  e.preventDefault()
+  const email = document.getElementById("email").value
+  const senha = document.getElementById("senha").value
+  login(email, senha)
+})
+
   </script>
 </body>
 </html>

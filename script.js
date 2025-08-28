@@ -1,11 +1,38 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js'
 
-const supabaseUrl = 'https://gvkanntuocgmdcuyhwkp.supabase.co';
-const supabaseKey = 'sua-chave-aqui';
-const supabase = createClient(supabaseUrl, supabaseKey);
+const SUPABASE_URL = "https://hbyvmtjwrxvbzioinizj.supabase.co"
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhieXZtdGp3cnh2Ynppb2luaXpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzMzk2ODgsImV4cCI6MjA3MTkxNTY4OH0.UtsSRuS2vEP7usFnUhkiLsCAjVdieUc-hdY4ywZdWsE" // sua anon key aqui
+export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
 
 const listaLojas = document.getElementById("lista-lojas");
 const searchInput = document.getElementById("search");
+
+import { supabase } from './script.js'
+
+async function cadastrarUsuario(nome, email, senha) {
+  const { data, error } = await supabase
+    .from('cadastro_de_usuario')
+    .insert([{ nome, email, senha }])
+
+  if (error) {
+    console.error("Erro no cadastro:", error)
+    alert("Erro ao cadastrar!")
+  } else {
+    alert("Cadastro realizado com sucesso!")
+    window.location.href = "login.html" // redireciona para login
+  }
+}
+
+// Exemplo: pegando os valores do formulário
+document.getElementById("formCadastro").addEventListener("submit", (e) => {
+  e.preventDefault()
+  const nome = document.getElementById("nome").value
+  const email = document.getElementById("email").value
+  const senha = document.getElementById("senha").value
+  cadastrarUsuario(nome, email, senha)
+})
+
 
 async function carregarLojas() {
   const { data, error } = await supabase.from("lojas").select("*");
